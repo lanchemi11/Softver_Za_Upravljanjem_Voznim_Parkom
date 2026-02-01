@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace FleetManagement.Models
 {
-    public class Vozac : User
+    public class Izvestaj
     {
-        public string BrojLicence { get; set; }
+        public int Id { get; set; }
+        public string Naziv { get; set; }
 
-        // Asocijacija: Vozac 1 → 0..* Vozilo
+        public DateTime DatumKreiranja { get; set; }
+
+        // Agregacija
         public ICollection<Vozilo> Vozila { get; set; }
     }
 }

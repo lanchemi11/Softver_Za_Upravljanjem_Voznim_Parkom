@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace FleetManagement.Models
 {
-    internal class Servis
+    public class Servis
     {
+        public int Id { get; set; }
+        public DateTime Datum { get; set; }
+        public string Opis { get; set; }
+        public decimal Cena { get; set; }
+
+        // FK ka Vozilo (kompozicija)
+        public int VoziloId { get; set; }
+        public Vozilo Vozilo { get; set; }
     }
 }
