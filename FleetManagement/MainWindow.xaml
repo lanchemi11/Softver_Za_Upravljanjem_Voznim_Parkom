@@ -1,17 +1,53 @@
 ﻿<Window x:Class="FleetManagement.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FleetManagement"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <StackPanel>
-            <Button Content="Otvori Vozila" Click="OtvoriVozila_Click" Width="150" Margin="5"/>
-            <Button Content="Otvori Servise" Click="OtvoriServise_Click" Width="150" Margin="5"/>
+        Title="Fleet Management" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Background="#f9f9f9">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Naslov -->
+        <TextBlock Text="Fleet Management System"
+                   FontSize="28" FontWeight="Bold"
+                   Foreground="#333"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"
+                   Grid.Row="0"/>
+
+        <!-- Glavni meni -->
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <Button Content="🚗 Pregled Vozila"
+                    Click="OtvoriVozila_Click"
+                    Width="220" Height="55"
+                    Background="#4CAF50" Foreground="White"
+                    FontSize="16" FontWeight="Bold"
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    Margin="0,5"/>
+
+            <Button Content="🛠️ Pregled Servisa"
+                    Click="OtvoriServise_Click"
+                    Width="220" Height="55"
+                    Background="#2196F3" Foreground="White"
+                    FontSize="16" FontWeight="Bold"
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    Margin="0,5"/>
+
+            <Button Content="📊 Izveštaji"
+                    Click="OtvoriIzvestaje_Click"
+                    Width="220" Height="55"
+                    Background="#FF9800" Foreground="White"
+                    FontSize="16" FontWeight="Bold"
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    Margin="0,5"/>
         </StackPanel>
-
-
     </Grid>
 </Window>

@@ -1,32 +1,54 @@
 ﻿<Window x:Class="FleetManagement.Views.VozilaView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Vozila" Height="500" Width="700">
+        Title="Pregled vozila" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Background="#f9f9f9">
 
-    <Grid Margin="10">
+    <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <!-- Naslov -->
+        <TextBlock Text="Pregled svih vozila"
+                   FontSize="20" FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,10"
+                   Grid.Row="0"/>
+
+        <!-- Tabela vozila -->
         <DataGrid ItemsSource="{Binding Vozila}" 
                   SelectedItem="{Binding SelektovanoVozilo}"
                   AutoGenerateColumns="False"
-                  Grid.Row="1">
+                  Grid.Row="1"
+                  AlternatingRowBackground="#eeeeee"
+                  RowBackground="White"
+                  BorderBrush="#cccccc"
+                  BorderThickness="1"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  IsReadOnly="True"
+                  Margin="0,0,0,10">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Marka" Binding="{Binding Marka}" />
-                <DataGridTextColumn Header="Model" Binding="{Binding Model}" />
-                <DataGridTextColumn Header="Godina" Binding="{Binding GodinaProizvodnje}" />
-                <DataGridTextColumn Header="Registracija" Binding="{Binding Registracija}" />
-                <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
+                <DataGridTextColumn Header="Marka" Binding="{Binding Marka}" Width="*" />
+                <DataGridTextColumn Header="Model" Binding="{Binding Model}" Width="*" />
+                <DataGridTextColumn Header="Godina" Binding="{Binding GodinaProizvodnje}" Width="*" />
+                <DataGridTextColumn Header="Registracija" Binding="{Binding Registracija}" Width="*" />
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" Grid.Row="2">
-            <Button Content="Dodaj" Command="{Binding OtvoriDodajFormuCommand}" Width="80" Margin="5"/>
-            <Button Content="Izmeni" Command="{Binding IzmeniVoziloCommand}" Width="80" Margin="5"/>
-            <Button Content="Obriši" Command="{Binding ObrisiVoziloCommand}" Width="80" Margin="5"/>
+            <Button Content="➕ Dodaj" Command="{Binding OtvoriDodajFormuCommand}" Width="100" Margin="5"
+            Background="#4CAF50" Foreground="White" FontWeight="Bold"/>
+            <Button Content="✏️ Izmeni" Command="{Binding OtvoriIzmeniFormuCommand}" Width="100" Margin="5"
+            Background="#2196F3" Foreground="White" FontWeight="Bold"/>
+            <Button Content="🗑️ Obriši" Command="{Binding ObrisiVoziloCommand}" Width="100" Margin="5"
+            Background="#F44336" Foreground="White" FontWeight="Bold"/>
         </StackPanel>
+
     </Grid>
 </Window>

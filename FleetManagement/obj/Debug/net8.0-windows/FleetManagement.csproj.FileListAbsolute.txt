@@ -131,3 +131,9 @@ C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetMan
 C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\obj\Debug\net8.0-windows\Views\ServisiView.g.cs
 C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\obj\Debug\net8.0-windows\Views\DodajVoziloView.g.cs
 C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\obj\Debug\net8.0-windows\Views\DodajVoziloView.baml
+C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\obj\Debug\net8.0-windows\Views\IzmeniVoziloView.baml
+C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\obj\Debug\net8.0-windows\Views\IzmeniVoziloView.g.cs
+C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\obj\Debug\net8.0-windows\Views\DodajServisView.baml
+C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\obj\Debug\net8.0-windows\Views\DodajServisView.g.cs
+C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\obj\Debug\net8.0-windows\Views\IzmeniServisView.baml
+C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\obj\Debug\net8.0-windows\Views\IzmeniServisView.g.cs

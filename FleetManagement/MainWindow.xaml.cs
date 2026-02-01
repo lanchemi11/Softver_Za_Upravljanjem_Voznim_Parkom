@@ -34,5 +34,10 @@ namespace FleetManagement
             servisiView.Show();
         }
 
+        private void OtvoriIzvestaje_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Ovde će ići forma za izveštaje.", "Izveštaji");
+        }
+
     }
 }

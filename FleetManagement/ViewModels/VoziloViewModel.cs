@@ -36,6 +36,8 @@ namespace FleetManagement.ViewModels
         public ICommand IzmeniVoziloCommand { get; }
         public ICommand OtvoriDodajFormuCommand { get; }
         public ICommand DodajVoziloCommand { get; }
+        public ICommand OtvoriIzmeniFormuCommand { get; }
+        public ICommand SacuvajIzmeneCommand { get; }
 
 
         public VoziloViewModel(AppDbContext context)
@@ -43,11 +45,13 @@ namespace FleetManagement.ViewModels
             _context = context;
             Vozila = new ObservableCollection<Vozilo>(_context.Vozila.ToList());
 
-            OtvoriDodajFormuCommand = new RelayCommand(_ => OtvoriDodajFormu());
+
             ObrisiVoziloCommand = new RelayCommand(_ => ObrisiVozilo(), _ => SelektovanoVozilo != null);
             IzmeniVoziloCommand = new RelayCommand(_ => IzmeniVozilo(), _ => SelektovanoVozilo != null);
+            OtvoriDodajFormuCommand = new RelayCommand(_ => OtvoriDodajFormu());
+            OtvoriIzmeniFormuCommand = new RelayCommand(_ => OtvoriIzmeniFormu());
             DodajVoziloCommand = new RelayCommand(_ => DodajVozilo());
-
+            SacuvajIzmeneCommand = new RelayCommand(_ => SacuvajIzmene(), _ => SelektovanoVozilo != null);
         }
 
         private void ObrisiVozilo()
@@ -107,6 +111,29 @@ namespace FleetManagement.ViewModels
                 .SingleOrDefault(w => w is DodajVoziloView)
                 ?.Close();
         }
+
+        private void OtvoriIzmeniFormu()
+        {
+            var izmeniView = new IzmeniVoziloView();
+            izmeniView.DataContext = this;
+            izmeniView.ShowDialog();
+        }
+
+        private void SacuvajIzmene()
+        {
+            if (SelektovanoVozilo == null) return;
+
+            _context.Vozila.Update(SelektovanoVozilo);
+            _context.SaveChanges();
+
+            OnPropertyChanged(nameof(Vozila));
+
+            Application.Current.Windows
+                .OfType<Window>()
+                .SingleOrDefault(w => w is IzmeniVoziloView)
+                ?.Close();
+        }
+
     }
 
 }

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\App.xaml
-4-2145579176
+71528523812
 
-271747822869
+30-125449018
 2161630823025
-MainWindow.xaml;Views\DodajVoziloView.xaml;Views\ServisiView.xaml;Views\VozilaView.xaml;
+MainWindow.xaml;Views\DodajServisView.xaml;Views\DodajVoziloView.xaml;Views\IzmeniServisView.xaml;Views\IzmeniVoziloView.xaml;Views\ServisiView.xaml;Views\VozilaView.xaml;
 
 False
 
