@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using FleetManagement.Views;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,5 +21,12 @@ namespace FleetManagement
         {
             InitializeComponent();
         }
+
+        private void OtvoriVozila_Click(object sender, RoutedEventArgs e)
+        {
+            VozilaView vozilaView = new VozilaView();
+            vozilaView.Show();
+        }
+
     }
 }

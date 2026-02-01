@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Button Content="Otvori Vozila" Click="OtvoriVozila_Click"/>
 
     </Grid>
 </Window>

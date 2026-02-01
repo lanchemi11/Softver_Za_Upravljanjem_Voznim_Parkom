@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using System.IO;
 
 namespace FleetManagement.Data
 {
@@ -8,7 +9,10 @@ namespace FleetManagement.Data
         public AppDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            optionsBuilder.UseSqlite("Data Source=fleet.db");
+            // baza će se uvek tražiti u folderu gde se pokreće exe
+            var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "fleet.db");
+            optionsBuilder.UseSqlite($"Data Source={dbPath}");
+
 
             return new AppDbContext(optionsBuilder.Options);
         }

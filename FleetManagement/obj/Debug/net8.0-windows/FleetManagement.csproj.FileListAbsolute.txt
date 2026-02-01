@@ -125,3 +125,5 @@ C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetMan
 C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\obj\Debug\net8.0-windows\FleetManagement.pdb
 C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\obj\Debug\net8.0-windows\FleetManagement.genruntimeconfig.cache
 C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\obj\Debug\net8.0-windows\ref\FleetManagement.dll
+C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\obj\Debug\net8.0-windows\Views\VozilaView.baml
+C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\obj\Debug\net8.0-windows\Views\VozilaView.g.cs
