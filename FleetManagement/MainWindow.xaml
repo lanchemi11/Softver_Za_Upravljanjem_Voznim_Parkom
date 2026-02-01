@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Otvori Vozila" Click="OtvoriVozila_Click"/>
+        <StackPanel>
+            <Button Content="Otvori Vozila" Click="OtvoriVozila_Click" Width="150" Margin="5"/>
+            <Button Content="Otvori Servise" Click="OtvoriServise_Click" Width="150" Margin="5"/>
+        </StackPanel>
+
 
     </Grid>
 </Window>

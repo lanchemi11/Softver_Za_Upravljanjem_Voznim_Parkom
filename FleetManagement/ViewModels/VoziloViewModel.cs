@@ -1,11 +1,13 @@
 ﻿using FleetManagement.Data;
 using FleetManagement.Models;
+using FleetManagement.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace FleetManagement.ViewModels
@@ -23,46 +25,29 @@ namespace FleetManagement.ViewModels
             set => SetProperty(ref _selektovanoVozilo, value);
         }
 
-        // Komande
-        public ICommand DodajVoziloCommand { get; }
+        private Vozilo _novoVozilo = new Vozilo();
+        public Vozilo NovoVozilo
+        {
+            get => _novoVozilo;
+            set => SetProperty(ref _novoVozilo, value);
+        }
+
         public ICommand ObrisiVoziloCommand { get; }
         public ICommand IzmeniVoziloCommand { get; }
+        public ICommand OtvoriDodajFormuCommand { get; }
+        public ICommand DodajVoziloCommand { get; }
+
 
         public VoziloViewModel(AppDbContext context)
         {
             _context = context;
+            Vozila = new ObservableCollection<Vozilo>(_context.Vozila.ToList());
 
-            try
-            {
-                Vozila = new ObservableCollection<Vozilo>(_context.Vozila.ToList());
-            }
-            catch (Exception ex)
-            {
-                Vozila = new ObservableCollection<Vozilo>();
-                System.Windows.MessageBox.Show($"Greška pri učitavanju vozila: {ex.Message}");
-            }
-
-
-            DodajVoziloCommand = new RelayCommand(_ => DodajVozilo());
+            OtvoriDodajFormuCommand = new RelayCommand(_ => OtvoriDodajFormu());
             ObrisiVoziloCommand = new RelayCommand(_ => ObrisiVozilo(), _ => SelektovanoVozilo != null);
             IzmeniVoziloCommand = new RelayCommand(_ => IzmeniVozilo(), _ => SelektovanoVozilo != null);
-        }
+            DodajVoziloCommand = new RelayCommand(_ => DodajVozilo());
 
-        private void DodajVozilo()
-        {
-            var novo = new Vozilo
-            {
-                Marka = "Dacia",
-                Model = "Logan",
-                GodinaProizvodnje = 2006,
-                Registracija = "CU-003-NS",
-                Status = "Aktivno"
-            };
-
-            _context.Vozila.Add(novo);
-            _context.SaveChanges();
-
-            Vozila.Add(novo);
         }
 
         private void ObrisiVozilo()
@@ -79,13 +64,48 @@ namespace FleetManagement.ViewModels
         {
             if (SelektovanoVozilo == null) return;
 
-            // primer izmene
-            SelektovanoVozilo.Status = "Servisirano";
             _context.Vozila.Update(SelektovanoVozilo);
             _context.SaveChanges();
 
-            // osvežavanje UI-a
             OnPropertyChanged(nameof(Vozila));
+        }
+
+        private void OtvoriDodajFormu()
+        {
+            var dodajView = new DodajVoziloView();
+            dodajView.DataContext = this;
+            dodajView.ShowDialog();
+        }
+
+        private void DodajVozilo()
+        {
+            if (string.IsNullOrWhiteSpace(NovoVozilo.Marka) ||
+                string.IsNullOrWhiteSpace(NovoVozilo.Model) ||
+                string.IsNullOrWhiteSpace(NovoVozilo.Registracija))
+            {
+                MessageBox.Show("Molimo popunite Marka, Model i Registraciju.",
+                                "Greška", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (NovoVozilo.GodinaProizvodnje <= 1900 || NovoVozilo.GodinaProizvodnje > DateTime.Now.Year)
+            {
+                MessageBox.Show("Godina proizvodnje mora biti između 1900 i trenutne godine.",
+                                "Greška", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            _context.Vozila.Add(NovoVozilo);
+            _context.SaveChanges();
+
+            Vozila.Add(NovoVozilo);
+
+            NovoVozilo = new Vozilo();
+
+            Application.Current.Windows
+                .OfType<Window>()
+                .SingleOrDefault(w => w is DodajVoziloView)
+                ?.Close();
         }
     }
 

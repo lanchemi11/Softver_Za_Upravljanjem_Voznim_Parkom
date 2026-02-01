@@ -1,19 +1,19 @@
 ﻿<Window x:Class="FleetManagement.Views.VozilaView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Vozila" Height="400" Width="600">
+        Title="Vozila" Height="500" Width="700">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Tabela vozila -->
         <DataGrid ItemsSource="{Binding Vozila}" 
                   SelectedItem="{Binding SelektovanoVozilo}"
                   AutoGenerateColumns="False"
-                  >
+                  Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Marka" Binding="{Binding Marka}" />
                 <DataGridTextColumn Header="Model" Binding="{Binding Model}" />
@@ -23,9 +23,8 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <!-- Dugmad za CRUD -->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" Grid.Row="1">
-            <Button Content="Dodaj" Command="{Binding DodajVoziloCommand}" Width="80" Margin="5"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" Grid.Row="2">
+            <Button Content="Dodaj" Command="{Binding OtvoriDodajFormuCommand}" Width="80" Margin="5"/>
             <Button Content="Izmeni" Command="{Binding IzmeniVoziloCommand}" Width="80" Margin="5"/>
             <Button Content="Obriši" Command="{Binding ObrisiVoziloCommand}" Width="80" Margin="5"/>
         </StackPanel>

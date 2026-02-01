@@ -28,5 +28,11 @@ namespace FleetManagement
             vozilaView.Show();
         }
 
+        private void OtvoriServise_Click(object sender, RoutedEventArgs e)
+        {
+            ServisiView servisiView = new ServisiView();
+            servisiView.Show();
+        }
+
     }
 }

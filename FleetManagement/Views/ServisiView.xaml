@@ -1,0 +1,30 @@
+﻿<Window x:Class="FleetManagement.Views.ServisiView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Servisi" Height="400" Width="600">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid ItemsSource="{Binding Servisi}" 
+                  SelectedItem="{Binding SelektovaniServis}"
+                  AutoGenerateColumns="False"
+                  Grid.Row="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Opis" Binding="{Binding Opis}" />
+                <DataGridTextColumn Header="Datum" Binding="{Binding Datum}" />
+                <DataGridTextColumn Header="VoziloId" Binding="{Binding VoziloId}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Dugmad za CRUD -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" Grid.Row="1">
+            <Button Content="Dodaj" Command="{Binding DodajServisCommand}" Width="80" Margin="5"/>
+            <Button Content="Izmeni" Command="{Binding IzmeniServisCommand}" Width="80" Margin="5"/>
+            <Button Content="Obriši" Command="{Binding ObrisiServisCommand}" Width="80" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Window>
