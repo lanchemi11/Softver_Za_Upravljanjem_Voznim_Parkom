@@ -31,8 +31,8 @@ namespace FleetManagement
 
             DbContext = new AppDbContext(options);
 
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            //MainWindow mainWindow = new MainWindow();
+            //mainWindow.Show();
         }
     }
 }

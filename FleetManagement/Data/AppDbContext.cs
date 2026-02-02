@@ -10,10 +10,18 @@ namespace FleetManagement.Data
 {
     public class AppDbContext : DbContext
     {
+        // Konstruktor za DI i migracije
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         {
         }
+
+        // Default konstruktor
+        public AppDbContext() : base(new DbContextOptionsBuilder<AppDbContext>()
+            .UseSqlite("Data Source=fleet.db").Options)
+        {
+        }
+
 
         public DbSet<User> Users { get; set; }
         public DbSet<Vozac> Vozaci { get; set; }

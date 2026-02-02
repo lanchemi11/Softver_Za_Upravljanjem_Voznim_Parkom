@@ -1,9 +1,10 @@
 ﻿<Application x:Class="FleetManagement.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:FleetManagement"
-             >
+             xmlns:conv="clr-namespace:FleetManagement.Converters"
+             StartupUri="Views/LoginView.xaml">
     <Application.Resources>
-         
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </Application.Resources>
 </Application>
+
