@@ -1,5 +1,6 @@
 ﻿using FleetManagement.Data;
 using FleetManagement.Models;
+using FleetManagement.Patterns;
 using FleetManagement.Views;
 using System;
 using System.Collections.Generic;
@@ -8,12 +9,12 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
-
 namespace FleetManagement.ViewModels
 {
     public class RegisterViewModel : INotifyPropertyChanged
     {
         private readonly AppDbContext _context;
+        private readonly IUserFactory _userFactory = new UserFactory();
 
         public string Username { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
@@ -37,10 +38,15 @@ namespace FleetManagement.ViewModels
 
         public ICommand RegisterCommand { get; }
 
+        private readonly UserRegistrationNotifier _notifier = new();
+
         public RegisterViewModel(AppDbContext context)
         {
             _context = context;
             RegisterCommand = new RelayCommand(Register);
+            _notifier.Attach(new LogObserver());
+            _notifier.Attach(new UiObserver());
+
         }
 
         public event Action? RegistrationSucceeded;
@@ -72,31 +78,23 @@ namespace FleetManagement.ViewModels
                 return;
             }
 
-            User? user = SelectedRole switch
+            User user;
+            try
             {
-                "Administrator" => new Administrator(),
-                "Menadzer" => new Menadzer(),
-                "Vozac" => new Vozac { BrojLicence = BrojLicence },
-                _ => null
-            };
-
-            if (user == null)
+                user = _userFactory.CreateUser(Username, Password, SelectedRole, BrojLicence);
+            }
+            catch (ArgumentException)
             {
-                MessageBox.Show("Morate odabrati rolu!");
+                MessageBox.Show("Morate odabrati validnu rolu!");
                 return;
             }
-
-            user.Username = Username;
-            user.Lozinka = Password;
-            user.Rola = SelectedRole;
 
             try
             {
                 _context.Add(user);
                 _context.SaveChanges();
 
-                MessageBox.Show("Uspešno ste registrovali korisnika!");
-
+                _notifier.Notify($"Korisnik '{user.Username}' uspešno registrovan!");
                 RegistrationSucceeded?.Invoke();
             }
             catch (Exception ex)
