@@ -9,7 +9,6 @@ namespace FleetManagement.Data
         public AppDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            // baza će se uvek tražiti u folderu gde se pokreće exe
             var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "fleet.db");
             optionsBuilder.UseSqlite($"Data Source={dbPath}");
 

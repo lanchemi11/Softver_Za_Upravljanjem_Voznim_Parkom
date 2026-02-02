@@ -12,7 +12,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Naslov -->
         <TextBlock Text="Pregled Servisa"
                    FontSize="22" FontWeight="Bold"
                    Foreground="#333"
@@ -20,7 +19,6 @@
                    Margin="0,0,0,15"
                    Grid.Row="0"/>
 
-        <!-- Tabela servisa -->
         <DataGrid ItemsSource="{Binding Servisi}" 
                   SelectedItem="{Binding SelektovaniServis}"
                   AutoGenerateColumns="False"
@@ -40,14 +38,21 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <!-- Dugmad za CRUD -->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" Grid.Row="2">
+        <WrapPanel HorizontalAlignment="Center" Margin="10" Grid.Row="2">
             <Button Content="➕ Dodaj" Command="{Binding OtvoriDodajServisCommand}" Width="100" Margin="5"
-                    Background="#4CAF50" Foreground="White" FontWeight="Bold"/>
+            Background="#4CAF50" Foreground="White" FontWeight="Bold"/>
             <Button Content="✏️ Izmeni" Command="{Binding OtvoriIzmeniServisCommand}" Width="100" Margin="5"
-                    Background="#2196F3" Foreground="White" FontWeight="Bold"/>
+            Background="#2196F3" Foreground="White" FontWeight="Bold"/>
             <Button Content="🗑️ Obriši" Command="{Binding ObrisiServisCommand}" Width="100" Margin="5"
-                    Background="#F44336" Foreground="White" FontWeight="Bold"/>
-        </StackPanel>
+            Background="#F44336" Foreground="White" FontWeight="Bold"/>
+            <Button Content="📄 Izveštaj Servisi" Command="{Binding IzvestajServisiPoVoziluCommand}" Width="150" Margin="5"
+            Background="#FF9800" Foreground="White" FontWeight="Bold"/>
+            <Button Content="📊 Broj Servisa" Command="{Binding IzvestajBrojServisaCommand}" Width="150" Margin="5"
+            Background="#9C27B0" Foreground="White" FontWeight="Bold"/>
+            <Button Content="📤 Export" Command="{Binding ExportServisiCommand}" Width="100" Margin="5"
+            Background="#009688" Foreground="White" FontWeight="Bold"/>
+            <Button Content="📥 Import" Command="{Binding ImportServisiCommand}" Width="100" Margin="5"
+            Background="#FF5722" Foreground="White" FontWeight="Bold"/>
+        </WrapPanel>
     </Grid>
 </Window>

@@ -1,9 +1,12 @@
 ﻿using FleetManagement.Data;
 using FleetManagement.Models;
+using FleetManagement.Utils;
 using FleetManagement.Views;
+using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
@@ -37,12 +40,16 @@ namespace FleetManagement.ViewModels
             set => SetProperty(ref _izabranoVozilo, value);
         }
 
-        // Komande
         public ICommand OtvoriDodajServisCommand { get; }
         public ICommand OtvoriIzmeniServisCommand { get; }
         public ICommand SacuvajServisCommand { get; }
         public ICommand SacuvajIzmeneServisCommand { get; }
         public ICommand ObrisiServisCommand { get; }
+        public ICommand IzvestajServisiPoVoziluCommand { get; }
+        public ICommand IzvestajBrojServisaCommand { get; }
+        public ICommand ExportServisiCommand { get; }
+        public ICommand ImportServisiCommand { get; }
+
 
         public ServisViewModel(AppDbContext context)
         {
@@ -56,6 +63,11 @@ namespace FleetManagement.ViewModels
             SacuvajServisCommand = new RelayCommand(_ => SacuvajServis());
             SacuvajIzmeneServisCommand = new RelayCommand(_ => SacuvajIzmeneServis(), _ => SelektovaniServis != null);
             ObrisiServisCommand = new RelayCommand(_ => ObrisiServis(), _ => SelektovaniServis != null);
+            IzvestajServisiPoVoziluCommand = new RelayCommand(_ => GenerisiIzvestajServisiPoVozilu());
+            IzvestajBrojServisaCommand = new RelayCommand(_ => GenerisiIzvestajBrojServisa());
+            ExportServisiCommand = new RelayCommand(_ => ExportServisi());
+            ImportServisiCommand = new RelayCommand(_ => ImportServisi());
+
         }
 
         private void OtvoriDodajServis()
@@ -135,6 +147,88 @@ namespace FleetManagement.ViewModels
             _context.SaveChanges();
 
             Servisi.Remove(SelektovaniServis);
+        }
+
+        private void GenerisiIzvestajServisiPoVozilu()
+        {
+            var report = ReportGenerator.ServisiPoVozilu(Servisi.ToList(), Vozila.ToList());
+
+            var sb = new StringBuilder();
+            foreach (var item in report)
+            {
+                sb.AppendLine($"{item.Vozilo} | {item.Datum} | {item.Opis}");
+            }
+
+            MessageBox.Show(sb.ToString(), "Izveštaj Servisi po vozilu");
+        }
+
+        private void GenerisiIzvestajBrojServisa()
+        {
+            var report = ReportGenerator.BrojServisaPoVozilu(Servisi.ToList(), Vozila.ToList());
+
+            var sb = new StringBuilder();
+            foreach (var item in report)
+            {
+                sb.AppendLine($"{item.Vozilo} | Broj servisa: {item.BrojServisa}");
+            }
+
+            MessageBox.Show(sb.ToString(), "Izveštaj Broj servisa po vozilu");
+        }
+
+
+        private void ExportServisi()
+        {
+            try
+            {
+                var dialog = new SaveFileDialog
+                {
+                    Title = "Sačuvaj servise",
+                    Filter = "JSON fajl (*.json)|*.json",
+                    FileName = "servisi.json"
+                };
+
+                if (dialog.ShowDialog() == true)
+                {
+                    FleetManagement.Utils.DataSerializer.SaveServisi(Servisi.ToList(), dialog.FileName);
+                    MessageBox.Show($"Servisi su uspešno eksportovani u {dialog.FileName}",
+                                    "Eksport", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri eksportu: {ex.Message}", "Greška",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+
+        private void ImportServisi()
+        {
+            try
+            {
+                var dialog = new OpenFileDialog
+                {
+                    Title = "Učitaj servise",
+                    Filter = "JSON fajl (*.json)|*.json"
+                };
+
+                if (dialog.ShowDialog() == true)
+                {
+                    var ucitani = FleetManagement.Utils.DataSerializer.LoadServisi(dialog.FileName);
+
+                    Servisi.Clear();
+                    foreach (var s in ucitani)
+                        Servisi.Add(s);
+
+                    MessageBox.Show($"Servisi su uspešno učitani iz {dialog.FileName}",
+                                    "Import", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška pri importu: {ex.Message}", "Greška",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

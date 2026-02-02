@@ -1,0 +1,34 @@
+﻿<Window x:Class="FleetManagement.Views.IzvestajiView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Izveštaji" Height="300" Width="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#f9f9f9">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Naslov -->
+        <TextBlock Text="Generisanje izveštaja"
+                   FontSize="20" FontWeight="Bold"
+                   Foreground="#333"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,15"/>
+
+        <!-- Dugmad za izveštaje -->
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
+            <Button Content="📄 Servisi po vozilu (PDF)" Command="{Binding IzvestajServisiPoVoziluCommand}"
+                    Width="250" Height="40" Margin="5"
+                    Background="#FF9800" Foreground="White" FontWeight="Bold"/>
+            <Button Content="📊 Broj servisa po vozilu (PDF)" Command="{Binding IzvestajBrojServisaCommand}"
+                    Width="250" Height="40" Margin="5"
+                    Background="#9C27B0" Foreground="White" FontWeight="Bold"/>
+            <Button Content="📤 Export JSON" Command="{Binding ExportServisiCommand}"
+                    Width="250" Height="40" Margin="5"
+                    Background="#009688" Foreground="White" FontWeight="Bold"/>
+        </StackPanel>
+    </Grid>
+</Window>

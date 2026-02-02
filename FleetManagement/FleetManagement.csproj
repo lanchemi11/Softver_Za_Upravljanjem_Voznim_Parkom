@@ -9,12 +9,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\ARIAL.TTF" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Fonts\ARIAL.TTF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="PdfSharp" Version="6.2.4" />
   </ItemGroup>
 
 </Project>

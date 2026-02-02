@@ -1,8 +1,12 @@
 ﻿using FleetManagement.Data;
+using FleetManagement.Utils;
 using Microsoft.EntityFrameworkCore;
+using PdfSharp.Fonts;
 using System.Configuration;
 using System.Data;
 using System.Windows;
+using PdfSharp.Fonts;
+using FleetManagement.Utils;
 
 namespace FleetManagement
 {
@@ -15,6 +19,10 @@ namespace FleetManagement
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            base.OnStartup(e);
+
+            // For fonts in pdf
+            GlobalFontSettings.FontResolver = new CustomFontResolver();
             base.OnStartup(e);
 
             var options = new DbContextOptionsBuilder<AppDbContext>()

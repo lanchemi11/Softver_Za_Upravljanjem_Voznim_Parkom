@@ -14,6 +14,9 @@
     <Compile Update="Views\IzmeniVoziloView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\IzvestajiView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\ServisiView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -497,7 +497,7 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
@@ -554,10 +554,10 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/8.0.0": {
+      "Microsoft.Extensions.Logging.Abstractions/8.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
@@ -619,6 +619,71 @@
         },
         "runtime": {
           "lib/netstandard2.0/Mono.TextTemplating.dll": {}
+        }
+      },
+      "PDFsharp/6.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
+          "System.Security.Cryptography.Pkcs": "8.0.1"
+        },
+        "compile": {
+          "lib/net8.0/PdfSharp.BarCodes.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net8.0/PdfSharp.Charting.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net8.0/PdfSharp.Cryptography.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net8.0/PdfSharp.Quality.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net8.0/PdfSharp.Shared.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net8.0/PdfSharp.Snippets.dll": {
+            "related": ".pdb"
+          },
+          "lib/net8.0/PdfSharp.System.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net8.0/PdfSharp.WPFonts.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net8.0/PdfSharp.dll": {
+            "related": ".BarCodes.pdb;.BarCodes.xml;.Charting.pdb;.Charting.xml;.Cryptography.pdb;.Cryptography.xml;.pdb;.Quality.pdb;.Quality.xml;.Shared.pdb;.Shared.xml;.Snippets.pdb;.System.pdb;.System.xml;.WPFonts.pdb;.WPFonts.xml;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/PdfSharp.BarCodes.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net8.0/PdfSharp.Charting.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net8.0/PdfSharp.Cryptography.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net8.0/PdfSharp.Quality.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net8.0/PdfSharp.Shared.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net8.0/PdfSharp.Snippets.dll": {
+            "related": ".pdb"
+          },
+          "lib/net8.0/PdfSharp.System.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net8.0/PdfSharp.WPFonts.dll": {
+            "related": ".pdb;.xml"
+          },
+          "lib/net8.0/PdfSharp.dll": {
+            "related": ".BarCodes.pdb;.BarCodes.xml;.Charting.pdb;.Charting.xml;.Cryptography.pdb;.Cryptography.xml;.pdb;.Quality.pdb;.Quality.xml;.Shared.pdb;.Shared.xml;.Snippets.pdb;.System.pdb;.System.xml;.WPFonts.pdb;.WPFonts.xml;.xml"
+          }
         }
       },
       "SQLitePCLRaw.bundle_e_sqlite3/2.1.6": {
@@ -944,6 +1009,28 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.Security.Cryptography.Pkcs/8.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Text.Encoding.CodePages/6.0.0": {
@@ -1765,10 +1852,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
-      "sha512": "cjWrLkJXK0rs4zofsK4bSdg+jhDLTaxrkXu4gS6Y7MAlCvRyNNgwY/lJi5RDlQOnSZweHqoyvgvbdvQsRIW+hg==",
+    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2": {
+      "sha512": "3iE7UF7MQkCv1cxzCahz+Y/guQbTqieyxyaWKhrRO91itI9cOKO76OHeQDahqG4MmW5umr3CcCvGmK92lWNlbg==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.0",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1792,7 +1879,7 @@
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-        "microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -1859,10 +1946,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/8.0.0": {
-      "sha512": "arDBqTgFCyS0EvRV7O3MZturChstm50OJ0y9bDJvAcmEPJm0FFpFyjU/JLYyStNGGey081DvnQYlncNX5SJJGA==",
+    "Microsoft.Extensions.Logging.Abstractions/8.0.3": {
+      "sha512": "dL0QGToTxggRLMYY4ZYX5AMwBb+byQBd/5dMiZE07Nv73o6I5Are3C7eQTh7K2+A4ct0PVISSr7TZANbiNb2yQ==",
       "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/8.0.0",
+      "path": "microsoft.extensions.logging.abstractions/8.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1927,7 +2014,7 @@
         "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.8.0.3.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -2020,6 +2107,123 @@
         "lib/netstandard2.0/Mono.TextTemplating.dll",
         "mono.texttemplating.2.2.1.nupkg.sha512",
         "mono.texttemplating.nuspec"
+      ]
+    },
+    "PDFsharp/6.2.4": {
+      "sha512": "GhTr9F1uOYXHCIEOB5PXIgqn5a8WLsJL2m0eewTA0IvY1j6N4HGXHKKmEyB90/N6vrjmYamf41V9zbmdW2HY3g==",
+      "type": "package",
+      "path": "pdfsharp/6.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "images/PDFsharp-128x128.png",
+        "lib/net10.0/PdfSharp.BarCodes.dll",
+        "lib/net10.0/PdfSharp.BarCodes.pdb",
+        "lib/net10.0/PdfSharp.BarCodes.xml",
+        "lib/net10.0/PdfSharp.Charting.dll",
+        "lib/net10.0/PdfSharp.Charting.pdb",
+        "lib/net10.0/PdfSharp.Charting.xml",
+        "lib/net10.0/PdfSharp.Cryptography.dll",
+        "lib/net10.0/PdfSharp.Cryptography.pdb",
+        "lib/net10.0/PdfSharp.Cryptography.xml",
+        "lib/net10.0/PdfSharp.Quality.dll",
+        "lib/net10.0/PdfSharp.Quality.pdb",
+        "lib/net10.0/PdfSharp.Quality.xml",
+        "lib/net10.0/PdfSharp.Shared.dll",
+        "lib/net10.0/PdfSharp.Shared.pdb",
+        "lib/net10.0/PdfSharp.Shared.xml",
+        "lib/net10.0/PdfSharp.Snippets.dll",
+        "lib/net10.0/PdfSharp.Snippets.pdb",
+        "lib/net10.0/PdfSharp.System.dll",
+        "lib/net10.0/PdfSharp.System.pdb",
+        "lib/net10.0/PdfSharp.System.xml",
+        "lib/net10.0/PdfSharp.WPFonts.dll",
+        "lib/net10.0/PdfSharp.WPFonts.pdb",
+        "lib/net10.0/PdfSharp.WPFonts.xml",
+        "lib/net10.0/PdfSharp.dll",
+        "lib/net10.0/PdfSharp.pdb",
+        "lib/net10.0/PdfSharp.xml",
+        "lib/net8.0/PdfSharp.BarCodes.dll",
+        "lib/net8.0/PdfSharp.BarCodes.pdb",
+        "lib/net8.0/PdfSharp.BarCodes.xml",
+        "lib/net8.0/PdfSharp.Charting.dll",
+        "lib/net8.0/PdfSharp.Charting.pdb",
+        "lib/net8.0/PdfSharp.Charting.xml",
+        "lib/net8.0/PdfSharp.Cryptography.dll",
+        "lib/net8.0/PdfSharp.Cryptography.pdb",
+        "lib/net8.0/PdfSharp.Cryptography.xml",
+        "lib/net8.0/PdfSharp.Quality.dll",
+        "lib/net8.0/PdfSharp.Quality.pdb",
+        "lib/net8.0/PdfSharp.Quality.xml",
+        "lib/net8.0/PdfSharp.Shared.dll",
+        "lib/net8.0/PdfSharp.Shared.pdb",
+        "lib/net8.0/PdfSharp.Shared.xml",
+        "lib/net8.0/PdfSharp.Snippets.dll",
+        "lib/net8.0/PdfSharp.Snippets.pdb",
+        "lib/net8.0/PdfSharp.System.dll",
+        "lib/net8.0/PdfSharp.System.pdb",
+        "lib/net8.0/PdfSharp.System.xml",
+        "lib/net8.0/PdfSharp.WPFonts.dll",
+        "lib/net8.0/PdfSharp.WPFonts.pdb",
+        "lib/net8.0/PdfSharp.WPFonts.xml",
+        "lib/net8.0/PdfSharp.dll",
+        "lib/net8.0/PdfSharp.pdb",
+        "lib/net8.0/PdfSharp.xml",
+        "lib/net9.0/PdfSharp.BarCodes.dll",
+        "lib/net9.0/PdfSharp.BarCodes.pdb",
+        "lib/net9.0/PdfSharp.BarCodes.xml",
+        "lib/net9.0/PdfSharp.Charting.dll",
+        "lib/net9.0/PdfSharp.Charting.pdb",
+        "lib/net9.0/PdfSharp.Charting.xml",
+        "lib/net9.0/PdfSharp.Cryptography.dll",
+        "lib/net9.0/PdfSharp.Cryptography.pdb",
+        "lib/net9.0/PdfSharp.Cryptography.xml",
+        "lib/net9.0/PdfSharp.Quality.dll",
+        "lib/net9.0/PdfSharp.Quality.pdb",
+        "lib/net9.0/PdfSharp.Quality.xml",
+        "lib/net9.0/PdfSharp.Shared.dll",
+        "lib/net9.0/PdfSharp.Shared.pdb",
+        "lib/net9.0/PdfSharp.Shared.xml",
+        "lib/net9.0/PdfSharp.Snippets.dll",
+        "lib/net9.0/PdfSharp.Snippets.pdb",
+        "lib/net9.0/PdfSharp.System.dll",
+        "lib/net9.0/PdfSharp.System.pdb",
+        "lib/net9.0/PdfSharp.System.xml",
+        "lib/net9.0/PdfSharp.WPFonts.dll",
+        "lib/net9.0/PdfSharp.WPFonts.pdb",
+        "lib/net9.0/PdfSharp.WPFonts.xml",
+        "lib/net9.0/PdfSharp.dll",
+        "lib/net9.0/PdfSharp.pdb",
+        "lib/net9.0/PdfSharp.xml",
+        "lib/netstandard2.0/PdfSharp.BarCodes.dll",
+        "lib/netstandard2.0/PdfSharp.BarCodes.pdb",
+        "lib/netstandard2.0/PdfSharp.BarCodes.xml",
+        "lib/netstandard2.0/PdfSharp.Charting.dll",
+        "lib/netstandard2.0/PdfSharp.Charting.pdb",
+        "lib/netstandard2.0/PdfSharp.Charting.xml",
+        "lib/netstandard2.0/PdfSharp.Cryptography.dll",
+        "lib/netstandard2.0/PdfSharp.Cryptography.pdb",
+        "lib/netstandard2.0/PdfSharp.Cryptography.xml",
+        "lib/netstandard2.0/PdfSharp.Quality.dll",
+        "lib/netstandard2.0/PdfSharp.Quality.pdb",
+        "lib/netstandard2.0/PdfSharp.Quality.xml",
+        "lib/netstandard2.0/PdfSharp.Shared.dll",
+        "lib/netstandard2.0/PdfSharp.Shared.pdb",
+        "lib/netstandard2.0/PdfSharp.Shared.xml",
+        "lib/netstandard2.0/PdfSharp.Snippets.dll",
+        "lib/netstandard2.0/PdfSharp.Snippets.pdb",
+        "lib/netstandard2.0/PdfSharp.System.dll",
+        "lib/netstandard2.0/PdfSharp.System.pdb",
+        "lib/netstandard2.0/PdfSharp.System.xml",
+        "lib/netstandard2.0/PdfSharp.WPFonts.dll",
+        "lib/netstandard2.0/PdfSharp.WPFonts.pdb",
+        "lib/netstandard2.0/PdfSharp.WPFonts.xml",
+        "lib/netstandard2.0/PdfSharp.dll",
+        "lib/netstandard2.0/PdfSharp.pdb",
+        "lib/netstandard2.0/PdfSharp.xml",
+        "pdfsharp.6.2.4.nupkg.sha512",
+        "pdfsharp.nuspec"
       ]
     },
     "SQLitePCLRaw.bundle_e_sqlite3/2.1.6": {
@@ -2381,6 +2585,43 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "System.Security.Cryptography.Pkcs/8.0.1": {
+      "sha512": "CoCRHFym33aUSf/NtWSVSZa99dkd0Hm7OCZUxORBjRB16LNhIEOf8THPqzIYlvKM0nNDAPTRBa1FxEECrgaxxA==",
+      "type": "package",
+      "path": "system.security.cryptography.pkcs/8.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Security.Cryptography.Pkcs.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Security.Cryptography.Pkcs.targets",
+        "lib/net462/System.Security.Cryptography.Pkcs.dll",
+        "lib/net462/System.Security.Cryptography.Pkcs.xml",
+        "lib/net6.0/System.Security.Cryptography.Pkcs.dll",
+        "lib/net6.0/System.Security.Cryptography.Pkcs.xml",
+        "lib/net7.0/System.Security.Cryptography.Pkcs.dll",
+        "lib/net7.0/System.Security.Cryptography.Pkcs.xml",
+        "lib/net8.0/System.Security.Cryptography.Pkcs.dll",
+        "lib/net8.0/System.Security.Cryptography.Pkcs.xml",
+        "lib/netstandard2.0/System.Security.Cryptography.Pkcs.dll",
+        "lib/netstandard2.0/System.Security.Cryptography.Pkcs.xml",
+        "lib/netstandard2.1/System.Security.Cryptography.Pkcs.dll",
+        "lib/netstandard2.1/System.Security.Cryptography.Pkcs.xml",
+        "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.dll",
+        "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.xml",
+        "runtimes/win/lib/net7.0/System.Security.Cryptography.Pkcs.dll",
+        "runtimes/win/lib/net7.0/System.Security.Cryptography.Pkcs.xml",
+        "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll",
+        "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.xml",
+        "system.security.cryptography.pkcs.8.0.1.nupkg.sha512",
+        "system.security.cryptography.pkcs.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "System.Text.Encoding.CodePages/6.0.0": {
       "sha512": "ZFCILZuOvtKPauZ/j/swhvw68ZRi9ATCfvGbk1QfydmcXBkIWecWKn/250UH7rahZ5OoDBaiAudJtPvLwzw85A==",
       "type": "package",
@@ -2560,7 +2801,8 @@
     "net8.0-windows7.0": [
       "Microsoft.EntityFrameworkCore >= 8.0.0",
       "Microsoft.EntityFrameworkCore.Sqlite >= 8.0.0",
-      "Microsoft.EntityFrameworkCore.Tools >= 8.0.0"
+      "Microsoft.EntityFrameworkCore.Tools >= 8.0.0",
+      "PdfSharp >= 6.2.4"
     ]
   },
   "packageFolders": {
@@ -2627,6 +2869,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[8.0.0, )"
+          },
+          "PdfSharp": {
+            "target": "Package",
+            "version": "[6.2.4, )"
           }
         },
         "imports": [

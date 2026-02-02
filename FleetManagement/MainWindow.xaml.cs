@@ -1,4 +1,6 @@
-﻿using FleetManagement.Views;
+﻿using FleetManagement.ViewModels;
+using FleetManagement.Views;
+using Microsoft.EntityFrameworkCore;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,17 +11,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FleetManagement.Data;
 
 namespace FleetManagement
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly AppDbContext _context;
         public MainWindow()
         {
             InitializeComponent();
+            var factory = new AppDbContextFactory();
+            _context = factory.CreateDbContext(Array.Empty<string>());
         }
 
         private void OtvoriVozila_Click(object sender, RoutedEventArgs e)
@@ -36,8 +39,9 @@ namespace FleetManagement
 
         private void OtvoriIzvestaje_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Ovde će ići forma za izveštaje.", "Izveštaji");
+            var view = new IzvestajiView();
+            view.DataContext = new IzvestajiViewModel(_context);
+            view.ShowDialog();
         }
-
     }
 }
