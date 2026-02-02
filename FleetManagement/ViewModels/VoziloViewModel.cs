@@ -4,10 +4,12 @@ using FleetManagement.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace FleetManagement.ViewModels
@@ -17,6 +19,31 @@ namespace FleetManagement.ViewModels
         private readonly AppDbContext _context;
 
         public ObservableCollection<Vozilo> Vozila { get; set; }
+        public ICollectionView VozilaView { get; set; }
+
+        private string _searchText;
+        public string SearchText
+        {
+            get => _searchText;
+            set
+            {
+                _searchText = value;
+                OnPropertyChanged();
+                VozilaView.Refresh();
+            }
+        }
+
+        private bool FilterVozila(object obj)
+        {
+            if (obj is Vozilo v)
+            {
+                if (string.IsNullOrEmpty(SearchText)) return true;
+                return v.Marka.Contains(SearchText, StringComparison.OrdinalIgnoreCase)
+                    || v.Model.Contains(SearchText, StringComparison.OrdinalIgnoreCase)
+                    || v.Registracija.Contains(SearchText, StringComparison.OrdinalIgnoreCase);
+            }
+            return false;
+        }
 
         private Vozilo _selektovanoVozilo;
         public Vozilo SelektovanoVozilo
@@ -43,7 +70,9 @@ namespace FleetManagement.ViewModels
         public VoziloViewModel(AppDbContext context)
         {
             _context = context;
-            Vozila = new ObservableCollection<Vozilo>(_context.Vozila.ToList());
+            Vozila = new ObservableCollection<Vozilo>(context.Vozila.ToList());
+            VozilaView = CollectionViewSource.GetDefaultView(Vozila);
+            VozilaView.Filter = FilterVozila;
 
 
             ObrisiVoziloCommand = new RelayCommand(_ => ObrisiVozilo(), _ => SelektovanoVozilo != null);

@@ -2,12 +2,15 @@
 using FleetManagement.Models;
 using FleetManagement.Utils;
 using FleetManagement.Views;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace FleetManagement.ViewModels
@@ -18,6 +21,19 @@ namespace FleetManagement.ViewModels
 
         public ObservableCollection<Servis> Servisi { get; set; }
         public ObservableCollection<Vozilo> Vozila { get; set; }
+        public ICollectionView ServisiView { get; set; }
+
+        private string _searchText;
+        public string SearchText
+        {
+            get => _searchText;
+            set
+            {
+                _searchText = value;
+                OnPropertyChanged();
+                ServisiView.Refresh();
+            }
+        }
 
         private Servis _selektovaniServis;
         public Servis SelektovaniServis
@@ -55,8 +71,10 @@ namespace FleetManagement.ViewModels
         {
             _context = context;
 
-            Servisi = new ObservableCollection<Servis>(_context.Servisi.ToList());
             Vozila = new ObservableCollection<Vozilo>(_context.Vozila.ToList());
+            Servisi = new ObservableCollection<Servis>(context.Servisi.Include(s => s.Vozilo).ToList());
+            ServisiView = CollectionViewSource.GetDefaultView(Servisi);
+            ServisiView.Filter = FilterServisi;
 
             OtvoriDodajServisCommand = new RelayCommand(_ => OtvoriDodajServis());
             OtvoriIzmeniServisCommand = new RelayCommand(_ => OtvoriIzmeniServis(), _ => SelektovaniServis != null);
@@ -69,7 +87,18 @@ namespace FleetManagement.ViewModels
             ImportServisiCommand = new RelayCommand(_ => ImportServisi());
 
         }
-
+        private bool FilterServisi(object obj)
+        {
+            if (obj is Servis s)
+            {
+                if (string.IsNullOrEmpty(SearchText)) return true;
+                return s.Opis.Contains(SearchText, StringComparison.OrdinalIgnoreCase)
+                    || s.Vozilo.Registracija.Contains(SearchText, StringComparison.OrdinalIgnoreCase)
+                    || s.Vozilo.Marka.Contains(SearchText, StringComparison.OrdinalIgnoreCase)
+                    || s.Vozilo.Model.Contains(SearchText, StringComparison.OrdinalIgnoreCase);
+            }
+            return false;
+        }
         private void OtvoriDodajServis()
         {
             var view = new DodajServisView();
