@@ -50,8 +50,7 @@ Podaci se čuvaju u SQLite bazi, a aplikacija koristi MVVM arhitekturu i Entity 
 - **ViewModel:** Logika aplikacije, ICommand implementacija, validacija.  
 - **View:** XAML forme (Login, Vozila, Servisi, Izveštaji).  
 - **Dizajn šabloni:**  
-  - Singleton (DbContext)  
-  - Command (ICommand implementacija)  
+  - Factory
   - Observer (INotifyPropertyChanged)  
 
 ---
