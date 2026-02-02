@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("testhost.exe")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("testhost.dll")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("fonts/arial.ttf")]
 
 

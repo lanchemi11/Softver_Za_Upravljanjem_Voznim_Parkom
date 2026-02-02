@@ -1,7 +1,7 @@
 ﻿FleetManagement
 1.0.0.0
 
-winexe
+exe
 C#
 .cs
 C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\obj\Debug\net8.0-windows\
@@ -11,10 +11,10 @@ false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\PC\Desktop\RAF\Dizajn i razvoj softvera\Ispitni projekat\repos\FleetManagement\FleetManagement\App.xaml
 101130358312
-1-240027245
-461902360232
-225107154451
+3-1149918905
+48945842864
+240466068244
 MainWindow.xaml;Views\DodajServisView.xaml;Views\DodajVoziloView.xaml;Views\IzmeniServisView.xaml;Views\IzmeniVoziloView.xaml;Views\IzvestajiView.xaml;Views\LoginView.xaml;Views\RegisterView.xaml;Views\ServisiView.xaml;Views\VozilaView.xaml;
 
-False
+True
 
